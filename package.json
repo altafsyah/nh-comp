@@ -16,7 +16,11 @@
     "@remix-run/node": "^2.16.5",
     "@remix-run/react": "^2.16.5",
     "@remix-run/serve": "^2.16.5",
-    "isbot": "^4.1.0"
+    "@tailwindcss/vite": "^4.1.5",
+    "clsx": "^2.1.1",
+    "isbot": "^4.1.0",
+    "motion": "^12.10.1",
+    "tailwindcss": "^4.1.5"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.16.5",

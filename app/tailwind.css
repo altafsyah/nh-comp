@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black1: #121212;
+  --color-green1: #2B7858;
+  --text-title: 4rem;
+  --text-subtitle: 1.875rem;
+  --text-description: 1.5rem;
+  --text-small: 1.125rem;
+}
+
+.bayon {
+  font-family: "Bayon", sans-serif;
+}
+
+.urbanist {
+  font-family: "Urbanist", sans-serif;
+}
+
+.plus-jakarta-sans {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
