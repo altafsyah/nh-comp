@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { MetaFunction } from "@remix-run/node";
-import {motion} from "motion/react"
+import { motion } from "motion/react";
 import { Link } from "@remix-run/react";
 import {
   aboutImages,
@@ -13,7 +13,7 @@ import clsx from "clsx";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "ngodinghouse || friendly and trusted software house" },
+    { title: "Ngoding House || friendly and trusted software house" },
     {
       name: "description",
       content:
@@ -63,20 +63,6 @@ export default function Index() {
             Innovative solutions tailored for your success. Unlock your
             potential with our software expertise!
           </p>
-          <ul className="flex items-center gap-5 mt-12">
-            <li className="w-24 aspect-square rounded-full bg-black1 text-white flex flex-col items-center justify-center">
-              <h4 className="text-2xl font-bold">200+</h4>
-              <h5 className="text-base font-light">Clients</h5>
-            </li>
-            <li className="w-24 aspect-square rounded-full bg-black1 text-white flex flex-col items-center justify-center">
-              <h4 className="text-2xl font-bold">5</h4>
-              <h5 className="text-base font-light">Yrs on the market</h5>
-            </li>
-            <li className="w-24 aspect-square rounded-full bg-black1 text-white flex flex-col items-center justify-center">
-              <h4 className="text-2xl font-bold">20</h4>
-              <h5 className="text-base font-light">Awards</h5>
-            </li>
-          </ul>
         </motion.div>
         <motion.div
           className="hidden lg:block -z-10 w-[300px] h-[400px] rounded-2xl bg-gray-500 absolute overflow-hidden"
