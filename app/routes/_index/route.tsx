@@ -6,10 +6,12 @@ import {
   aboutImages,
   partners,
   services,
+  testimonials,
   // testimonials,
   works,
 } from "~/data/home";
 import clsx from "clsx";
+import SliderInformation from "./slider-information";
 
 export const meta: MetaFunction = () => {
   return [
@@ -54,14 +56,12 @@ export default function Index() {
             },
           }}
         >
-          <h1 className="max-w-4xl text-3xl lg:text-5xl bayon leading-10 lg:leading-[80px]">
-            WE CRAFTING BIG IDEAS. WEBSITE. APPS.
-            <br className="hidden lg:block" />
-            FOR REAL PEOPLE. FROM REAL PEOPLE
+          <h1 className="max-w-4xl text-3xl lg:text-5xl bayon leading-16">
+            We build websites and apps for real businesses, not just big tech.
           </h1>
-          <p className="text-lg lg:text-xl mt-3 max-w-xl leading-6">
-            Innovative solutions tailored for your success. Unlock your
-            potential with our software expertise!
+          <p className="text-lg lg:text-2xl mt-3 max-w-xl">
+            We helps businesses go digital — with custom solutions, fair
+            pricing, and a team that actually listens.
           </p>
         </motion.div>
         <motion.div
@@ -111,21 +111,8 @@ export default function Index() {
           />
         </motion.div>
       </section>
-      <section
-        id="partner"
-        className="w-full bg-black1 py-6 flex justify-center items-center gap-10 overflow-hidden"
-      >
-        {partners.map((partner) => (
-          <motion.img
-            key={partner.name}
-            src={partner.logo}
-            alt={partner.name}
-            className="h-10"
-            initial={{ filter: "blur(30px)" }}
-            whileInView={{ filter: "blur(0px" }}
-            viewport={{ once: true }}
-          />
-        ))}
+      <section id="partner" className="bg-black1 relative py-10">
+        <SliderInformation />
       </section>
       <section
         id="services"
@@ -182,7 +169,8 @@ export default function Index() {
       >
         <h1 className="text-5xl lg:text-title font-bold">About us</h1>
         <h5 className="text-lg lg:text-2xl font-medium mt-5">
-          Discover Our Story: Unveiling the Heartbeat Behind ngodinghouse
+          We're a small team with big ideas — building apps and websites people
+          actually use.
         </h5>
         <Link
           to="/about"
@@ -214,7 +202,7 @@ export default function Index() {
               <img
                 src={image.src}
                 alt={image.alt}
-                className="w-full h-full object-cover group-hover:scale-125 transition-all duration-500"
+                className="w-full h-full object-cover group-hover:scale-125 transition-all duration-500 grayscale-100 group-hover:grayscale-0"
               />
             </motion.div>
           ))}
@@ -227,9 +215,8 @@ export default function Index() {
         <div className="w-full">
           <h1 className="text-title font-bold">Our Works</h1>
           <p className="text-2xl font-medium mt-5 max-w-4xl">
-            Dive into our portfolio, witness the fusion of creativity and
-            craftsmanship in every project. Explore Our Works and be inspired to
-            redefine possibilities.
+            Real projects, real results. See how we turn ideas into apps,
+            websites, and digital experiences that make a difference.
           </p>
           <Link
             to="/works"
@@ -240,7 +227,7 @@ export default function Index() {
         </div>
 
         <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {works.map((work, index) => (
+          {works.map((work) => (
             <div
               key={(work.image, work.tag)}
               className={clsx(
@@ -252,7 +239,7 @@ export default function Index() {
                 alt={work.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute w-full h-full bg-gradient-to-b from-transparent to-black z-20 top-0 left-0 text-white flex flex-col justify-end p-5 lg:-10 ">
+              <div className="absolute w-full h-full bg-linear-to-b from-transparent to-black z-20 top-0 left-0 text-white flex flex-col justify-end p-5 lg:-10 ">
                 <h3 className="text-4xl font-semibold leading-10 urbanist">
                   {work.title}
                 </h3>

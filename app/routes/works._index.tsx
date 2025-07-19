@@ -1,6 +1,30 @@
 import { works } from "~/data/home";
+import { MetaFunction } from "@remix-run/node";
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Ngoding House || Works" },
+    {
+      name: "description",
+      content:
+        "We're passionate about crafting digital experiences that inspire. With expertise in web and app development, we turn ideas into reality.",
+    },
+    {
+      name: "keywords",
+      content:
+        "web development, app development, digital experience, software solutions",
+    },
+    {
+      name: "author",
+      content: "ngodinghouse",
+    },
+  ];
+};
 
 export default function Works() {
+  const [modal, setModal] = useState<(typeof works)[0] | null>(null);
   return (
     <>
       <section
@@ -29,23 +53,25 @@ export default function Works() {
           </div>
           <div className="px-8 py-2 border border-black1 rounded-full w-fit">
             Mobile
-          </div>{" "}
+          </div>
           <div className="px-8 py-2 border border-black1 rounded-full w-fit">
             UI/UX Design
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20">
           {works.map((work) => (
-            <div
+            <motion.div
+              layoutId={work.image}
               key={(work.image, work.tag)}
-              className="w-full h-[300px] lg:h-[450px] rounded-xl overflow-hidden relative"
+              onClick={() => setModal(work)}
+              className="w-full h-[300px] lg:h-[450px] rounded-xl overflow-hidden relative group"
             >
               <img
                 src={work.image}
                 alt={work.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
               />
-              <div className="absolute w-full h-full bg-gradient-to-b from-transparent to-black z-20 top-0 left-0 text-white flex flex-col justify-end p-5 lg:p-10 ">
+              <div className="absolute w-full h-full bg-linear-to-b from-transparent to-black z-20 top-0 left-0 text-white flex flex-col justify-end p-5 lg:p-10 ">
                 <h3 className="text-4xl font-semibold leading-10 urbanist">
                   {work.title}
                 </h3>
@@ -53,8 +79,37 @@ export default function Works() {
                   <h5>{work.tag}</h5>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
+          {modal && (
+            <motion.div
+              className="w-full fixed bg-black/10 backdrop-blur-sm inset-0 z-50 flex justify-center items-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              onClick={() => setModal(null)}
+            >
+              <motion.div
+                layoutId={modal.image}
+                onClick={(e) => e.stopPropagation()}
+                className="w-[400px] h-[400px] bg-white rounded overflow-hidden shadow"
+                transition={{
+                  duration: 0.3,
+                  ease: "easeOut",
+                  stiffness: 1000,
+                  damping: 50,
+                  bounce: 100,
+                }}
+              >
+                <img
+                  src={modal.image}
+                  alt={modal.title}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            </motion.div>
+          )}
         </div>
       </section>
     </>

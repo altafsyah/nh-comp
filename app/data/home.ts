@@ -3,19 +3,19 @@ export const services = [
     icon: "/images/ui_icon.svg",
     title: "UI/UX Design",
     description:
-      "Elevate user experiences with Our cutting-edge UI/UX solutions.",
+      "We make things look good and work great. Simple, clean design that your users will love.",
   },
   {
     icon: "/images/mobile_icon.svg",
     title: "Mobile Development",
     description:
-      "Revolutionize your digital presence with Our innovative apps. Experience excellence in every tap!",
+      "From delivery apps to community tools — if it needs to be on your phone, we can build it.",
   },
   {
     icon: "/images/web_icon.svg",
     title: "Web Development",
     description:
-      "Elevate your digital presence with Our bespoke websites. Transform your online identity today!",
+      "Websites that don’t just sit pretty. We build fast, mobile-friendly sites that do real work for your business.",
   },
 ];
 
@@ -75,7 +75,7 @@ export const works = [
   {
     title: "Sayuran App",
     tag: "UI/UX Design",
-    image: "/images/work_dummy_1.jfif",
+    image: "/images/work_dummy_11.jfif",
   },
 ];
 

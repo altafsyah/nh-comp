@@ -34,31 +34,33 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="urbanist">
-        <nav className=" bg-white py-8 drop-shadow">
+      <body className="urbanist bg-surface">
+        <nav className="sticky top-0 py-8 border-b border-gray-100 z-50 bg-white/50 backdrop-blur-xs">
           <div className="container w-full mx-auto flex justify-between items-center px-5">
             <Link to="/" className="text-xl md:text-3xl font-bold">
               ngodinghouse
             </Link>
-            <ul className="lg:flex items-center gap-5 text-xl font-medium hidden">
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/works">Works</Link>
-              </li>
-              <li>
-                <Link to="/clients">Client</Link>
-              </li>
-            </ul>
-            <Link
-              to="mailto:hi@ngodinghouse.com"
-              rel="noreferrer"
-              target="_blank"
-              className="lg:block text-2xl w-fit py-3 px-12 rounded-full bg-[#2C3147] text-white font-medium hidden"
-            >
-              Contact
-            </Link>
+            <div className="flex gap-5 items-center">
+              <ul className="lg:flex items-center gap-5 text-xl font-medium hidden">
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+                <li>
+                  <Link to="/works">Works</Link>
+                </li>
+                <li>
+                  <Link to="/clients">Client</Link>
+                </li>
+              </ul>
+              <Link
+                to="mailto:hi@ngodinghouse.com"
+                rel="noreferrer"
+                target="_blank"
+                className="lg:block text-xl w-fit py-2 px-5 rounded-full bg-[#2C3147] text-white font-medium hidden"
+              >
+                Contact
+              </Link>
+            </div>
           </div>
         </nav>
         <main className="w-full min-h-[60vh]">{children}</main>
