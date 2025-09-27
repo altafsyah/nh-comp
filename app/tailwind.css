@@ -2,11 +2,12 @@
 
 @theme {
   --color-black1: #121212;
-  --color-green1: #2B7858;
+  --color-green1: #2b7858;
   --text-title: 4rem;
   --text-subtitle: 1.875rem;
   --text-description: 1.5rem;
   --text-small: 1.125rem;
+  --color-surface: #f5f5f5;
 }
 
 .bayon {

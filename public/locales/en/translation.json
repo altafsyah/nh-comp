@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "title": "WE CRAFTING BIG IDEAS WEBSITE APPS FOR REAL PEOPLE FROM REAL PEOPLE",
+    "hero-subtitle": "Innovative solutions tailored for your success. Unlock your potential with our software expertise!"
+  },
+  "what-we-do": {
+    "title": "What We Do",
+    "items": [
+      {
+        "title": "UI/UX Design",
+        "description": "Elevate user experiences with Our cutting-edge UI/UX solutions."
+      },
+      {
+        "title": "Mobile Development",
+        "description": "Revolutionize your digital presence with Our innovative apps. Experience excellence in every tap!"
+      },
+      {
+        "title": "Web Development",
+        "description": "Elevate your digital presence with Our bespoke websites. Transform your online identity today!"
+      }
+    ]
+  },
+  "about-us": {
+    "title": "About Us",
+    "description": "Discover Our Story: Unveiling the Heartbeat Behind ngodinghouse"
+  },
+  "our-works": {
+    "title": "Our Works",
+    "description": "Dive into our portfolio, witness the fusion of creativity and craftsmanship in every project. Explore Our Works and be inspired to redefine possibilities.",
+    "button": "See more"
+  }
+}

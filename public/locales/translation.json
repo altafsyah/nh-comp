@@ -1,0 +1,65 @@
+{
+  "hero": {
+    "heading": "We build websites and apps for real businesses, not just big tech.",
+    "subheading": "NgodingHouse helps local brands go digital — with custom solutions, fair pricing, and a team that actually listens.",
+    "cta": "Start Your Project"
+  },
+  "hero_id": {
+    "heading": "Kami bangun website dan aplikasi untuk bisnis lokal.",
+    "subheading": "NgodingHouse bantu brand lokal hadir secara digital — dengan solusi custom, harga wajar, dan tim yang mendengarkan.",
+    "cta": "Mulai Proyek"
+  },
+  "services": {
+    "title": "What we do",
+    "uiux": {
+      "title": "UI/UX Design",
+      "desc": "We design clean, user-friendly interfaces that make your app or website easy to use — and nice to look at too."
+    },
+    "mobile": {
+      "title": "Mobile Development",
+      "desc": "We build mobile apps that work fast, look good, and help your users get things done — from orders to bookings."
+    },
+    "web": {
+      "title": "Web Development",
+      "desc": "Need a website for your business? We build custom sites that are fast, mobile-friendly, and easy to manage."
+    }
+  },
+  "services_id": {
+    "title": "Layanan Kami",
+    "uiux": {
+      "title": "UI/UX Design",
+      "desc": "Kami desain tampilan dan pengalaman aplikasi atau website agar terlihat rapi, mudah dipakai, dan nyaman untuk pengguna."
+    },
+    "mobile": {
+      "title": "Mobile Development",
+      "desc": "Kami buat aplikasi mobile yang cepat, responsif, dan fungsional — cocok untuk kebutuhan usaha, komunitas, atau sistem internal."
+    },
+    "web": {
+      "title": "Web Development",
+      "desc": "Ingin punya website untuk usaha atau brand? Kami bikin website custom yang tampil profesional, mudah diakses di HP, dan gampang dikelola."
+    }
+  },
+  "about": {
+    "title": "About us",
+    "subtitle": "We're a small team with big ideas — building apps and websites people actually use.",
+    "cta": "See more"
+  },
+  "about_id": {
+    "title": "Tentang kami",
+    "subtitle": "Kami tim kecil dengan ide besar — bikin website dan aplikasi yang benar-benar dipakai orang.",
+    "cta": "Selengkapnya"
+  },
+  "work": {
+    "title": "Our Works",
+    "subtitle": "Real projects, real results. See how we turn ideas into apps, websites, and digital experiences that make a difference.",
+    "cta": "See more"
+  },
+  "work_id": {
+    "title": "Karya Kami",
+    "subtitle": "Lihat langsung hasil kerja kami — dari ide jadi aplikasi, website, dan produk digital yang benar-benar berguna.",
+    "cta": "Selengkapnya"
+  },
+  "about-hero": {
+    "description": "Kami menciptakan pengalaman digital yang menginspirasi.Dengan keahlian di bidang pengembangan web dan aplikasi,kami mewujudkan ide menjadi solusi nyata untuk mendukung pertumbuhan bisnis di era digital."
+  }
+}
