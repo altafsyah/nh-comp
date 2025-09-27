@@ -9,10 +9,12 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 import stylesheet from "~/tailwind.css?url";
+import { ReactLenis } from "lenis/react";
+import Footer from "./components/footer";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
-  { rel: "manifest", hre: "/site.webmanifest" },
+  { rel: "manifest", href: "/site.webmanifest" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -22,6 +24,11 @@ export const links: LinksFunction = () => [
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Bayon&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap",
+  },
+  {
+    rel: "preload",
+    href: "/assets/sprite.svg",
+    type: "image/svg+xml",
   },
 ];
 
@@ -34,75 +41,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="urbanist bg-surface">
-        <nav className="sticky top-0 py-8 border-b border-gray-100 z-50 bg-white/50 backdrop-blur-xs">
-          <div className="container w-full mx-auto flex justify-between items-center px-5">
-            <Link to="/" className="text-xl md:text-3xl font-bold">
-              ngodinghouse
-            </Link>
-            <div className="flex gap-5 items-center">
-              <ul className="lg:flex items-center gap-5 text-xl font-medium hidden">
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
-                  <Link to="/works">Works</Link>
-                </li>
-                <li>
-                  <Link to="/clients">Client</Link>
-                </li>
-              </ul>
-              <Link
-                to="mailto:hi@ngodinghouse.com"
-                rel="noreferrer"
-                target="_blank"
-                className="lg:block text-xl w-fit py-2 px-5 rounded-full bg-[#2C3147] text-white font-medium hidden"
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-        </nav>
+      <body className="urbanist bg-slate-950 text-gray-300 overflow-hidden">
+        <ReactLenis root />
+
         <main className="w-full min-h-[60vh]">{children}</main>
-        <footer className="w-full pt-12 bg-black1 text-white relative overflow-hidden">
-          <div className="lg:flex justify-between container mx-auto px-5">
-            <h1 className="text-2xl md:text-5xl font-bold w-full md:leading-[57px] text-center md:text-left">
-              Empowering Innovation, Building Tomorrow: Your Trusted Software
-              House.
-            </h1>
-            <div className="w-full flex flex-col items-center md:items-end mt-10 md:mt-0 text-center">
-              <h3 className="text-xl md:text-4xl font-bold">Ready To Talk?</h3>
-              <p className="mt-2 md:mt-4 text-lg md:text-2xl">
-                We've got a good feeling about this
-              </p>
-              <Link
-                to="mailto:hi@ngodinghouse.com"
-                className="block text-lg md:text-2xl w-fit py-1 md:py-3 px-6 md:px-12 rounded-full bg-[#2C3147] text-white font-medium mt-5"
-              >
-                Start a Project
-              </Link>
-            </div>
-          </div>
-          <h1 className="absolute -bottom-4 hidden md:block text-[200px] left-1/2 -translate-x-1/2 font-bold">
-            ngoding<span className="text-[#2C3147asdasd]">house</span>
-          </h1>
-          <div className="mt-24 md:mt-56 bg-black1 border-t border-t-white pt-7 pb-12 flex flex-col md:flex-row gap-5 justify-between items-center relative z-20 container w-full mx-auto px-5">
-            <h5>© 2024 ngodinghouse, All Rights Reserved.</h5>
-            <div className="flex gap-4 items-center">
-              <a
-                href="https://www.instagram.com/ngodinghouse/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src="/images/instagram.svg"
-                  alt="Instagram"
-                  className="h-6"
-                />
-              </a>
-            </div>
-          </div>
-        </footer>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
