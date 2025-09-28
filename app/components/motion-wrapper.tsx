@@ -1,6 +1,10 @@
 import { motion } from "motion/react";
 import type { HTMLMotionProps } from "motion/react";
 
+export const MSection = (props: HTMLMotionProps<"section">) => {
+  return <motion.section {...props} />;
+};
+
 export const MDiv = (props: HTMLMotionProps<"div">) => {
   return <motion.div {...props} />;
 };

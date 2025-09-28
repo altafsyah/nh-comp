@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { MH3, MSpan } from "~/components/motion-wrapper";
+import { MH3, MLi, MSpan } from "~/components/motion-wrapper";
 
 interface FAQItemProps {
   question?: string;
@@ -104,14 +104,20 @@ export default function FAQs() {
   return (
     <ul className="space-y-4">
       {faqItems.map((item, index) => (
-        <li key={`faq_${index}`}>
+        <MLi
+          initial={{ filter: "blur(4px)", y: 12, opacity: 0 }}
+          whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.125 * index }}
+          key={`faq_${index}`}
+        >
           <FAQItem
             question={item.question}
             answer={item.answer}
             isOpen={expandedIndex === index}
             toggle={() => handleToggle(index)}
           />
-        </li>
+        </MLi>
       ))}
     </ul>
   );
