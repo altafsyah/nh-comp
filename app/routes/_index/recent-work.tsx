@@ -1,7 +1,9 @@
 import clsx from "clsx";
 import { MH2 } from "~/components/motion-wrapper";
 import useEmblaCarousel from "embla-carousel-react";
-import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
+import wheelGestures from "embla-carousel-wheel-gestures";
+
+const { WheelGesturesPlugin } = wheelGestures as any;
 
 export default function RecentWorks() {
   const [emblaRef] = useEmblaCarousel(
