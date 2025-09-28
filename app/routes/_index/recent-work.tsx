@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import useEmblaCarousel from "embla-carousel-react";
-import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
+import * as EmblaWheelGestures from "embla-carousel-wheel-gestures";
 import { MDiv } from "~/components/motion-wrapper";
 import { getSplitTextAnimation } from "~/lib/getSplitTextAnimation";
-
+const { WheelGesturesPlugin } = EmblaWheelGestures;
 const WORKS = [
   "/images/work_dummy_1.jfif",
   "/images/work_dummy_2.jfif",
@@ -36,10 +36,7 @@ export default function RecentWorks() {
           })}
         </p>
       </div>
-      <div
-        ref={emblaRef}
-        className="container mx-auto embla"
-      >
+      <div ref={emblaRef} className="container mx-auto embla">
         <div className="mt-9 flex gap-6 pl-6 md:pl-10 cursor-grab active:cursor-grabbing embla__container">
           {WORKS.map((workItem, index) => (
             <MDiv
