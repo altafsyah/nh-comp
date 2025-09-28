@@ -198,7 +198,7 @@ export default function Index() {
           {services.map((service, index) => (
             <MLi
               key={service.title}
-              className="p-6 md:p-8 border border-[#D1D5DB] rounded-xl drop-shadow"
+              className="p-6 md:p-8 rounded-xl drop-shadow ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur"
               initial={{
                 opacity: 0,
                 y: 20,
@@ -215,7 +215,7 @@ export default function Index() {
                 duration: 0.5,
               }}
             >
-              <div className="w-12 lg:w-16 aspect-square flex justify-center items-center rounded-full bg-black1">
+              <div className="w-12 lg:w-16 aspect-square flex justify-center items-center rounded-full ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur">
                 <img
                   src={service.icon}
                   alt="ui"
