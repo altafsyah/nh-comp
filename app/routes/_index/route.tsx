@@ -3,11 +3,13 @@ import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import { services } from "~/data/home";
 import clsx from "clsx";
-import { MH1, MH2, MLi, MP, MSpan } from "~/components/motion-wrapper";
+import { MDiv, MH1, MH2, MLi, MP } from "~/components/motion-wrapper";
 import RecentWorks from "./recent-work";
 import FAQs from "./faqs";
 import CalButton from "~/components/calcom-iframe";
 import Icon from "~/components/icon";
+import { getSplitTextAnimation } from "~/lib/getSplitTextAnimation";
+import { fadeUpValue } from "~/constant/motion-value";
 
 export const meta: MetaFunction = () => {
   return [
@@ -74,39 +76,35 @@ export default function Index() {
     <>
       <section
         id="hero"
-        className="w-full min-h-fit h-[100dvh] flex flex-col justify-end bg-slate-950 relative overflow-x-hidden text-white py-10"
+        className="w-full min-h-fit h-dvh md:h-fit lg:h-dvh flex flex-col justify-end bg-slate-950 relative overflow-x-hidden text-white py-10"
       >
-        <div className="p-10 space-y-4 container mx-auto">
-          <MH1 className="text-2xl md:text-3xl lg:text-5xl font-semibold">
-            Hi, we're open
-            <MSpan
-              initial={{ rotate: 0 }}
-              animate={{ rotate: [0, 4, -6, 4, 0] }}
-              transition={{
-                repeat: Infinity,
-                duration: 2,
-                ease: "easeInOut",
-              }}
-              className="inline-block"
-            >
-              {" 👋"}
-            </MSpan>
+        <div className="p-6 md:p-10 space-y-4 container mx-auto">
+          <MH1 className="text-3xl lg:text-5xl font-semibold">
+            {getSplitTextAnimation({
+              text: "Hi, we're open",
+            })}
           </MH1>
-          <MP className="text-xl md:text-2xl lg:text-4xl">
-            We're here to help you solve your biggest challenges with smart,
-            effective software.
+          <MP className="text-xl lg:text-4xl">
+            {getSplitTextAnimation({
+              text: "We're here to help you solve your biggest challenges with smart, effective software.",
+            })}
           </MP>
           <div className="flex items-center mt-6 gap-4 md:gap-8">
-            <CalButton className="bg-slate-600 px-5 py-2 rounded-full ring-2 ring-slate-500 hover:bg-slate-500 hover:border-slate-600/60 transition-colors duration-150 font-medium">
-              Book a call
-            </CalButton>
-            <Link to="/">Recent works</Link>
+            <MDiv {...fadeUpValue(0.2)}>
+              <CalButton className="bg-slate-600 px-5 py-2 rounded-full ring-2 ring-slate-500 hover:bg-slate-500 hover:border-slate-600/60 transition-colors duration-150 font-medium">
+                Book a call
+              </CalButton>
+            </MDiv>
+            <MDiv {...fadeUpValue(0.4)}>
+              <Link to="/">Recent works</Link>
+            </MDiv>
           </div>
         </div>
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 md:mt-8 h-[400px] px-10 gap-2 ">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 mt-6 md:mt-8 px-6 md:px-10 gap-x-2 gap-y-4 ">
           {heroItems.map((item, index) => (
-            <div
-              className="h-full bg-gray-500 relative rounded-2xl overflow-hidden"
+            <MDiv
+              {...fadeUpValue(index === 0 ? 0.275 : 0.275 * index)}
+              className="h-[150px] md:h-[250px] lg:h-[400px] bg-gray-500 relative rounded-2xl overflow-hidden"
               key={`${item.title}_${index}_hero`}
             >
               <div className="absolute inset-0">
@@ -116,13 +114,13 @@ export default function Index() {
                   className="object-cover w-full h-full"
                 />
               </div>
-              <div className="relative p-6 bg-gradient-to-t from-black/70 to-transparent  flex flex-col justify-end h-full w-full">
+              <div className="relative p-6 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end h-full w-full">
                 <div className="flex justify-between">
                   <h3 className="shrink-0 text-xl font-semibold">
                     {item.title}
                   </h3>
-                  <ul className="flex gap-3 items-center flex-wrap">
-                    <li>
+                  <ul className="hidden lg:flex gap-3 items-center flex-wrap">
+                    <li className="hidden lg:block">
                       <img
                         src="/images/web_icon.svg"
                         alt=""
@@ -139,60 +137,82 @@ export default function Index() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </MDiv>
           ))}
         </div>
       </section>
       <section id="values" className="w-full">
-        <div className="container mx-auto p-10 grid grid-cols-12">
-          <div className="col-span-12 md:col-span-3">
-            <h2 className="text-5xl font-semibold">Our Values</h2>
+        <div className="container mx-auto p-6 md:p-10 grid grid-cols-12 gap-y-10">
+          <div className="col-span-12 lg:col-span-3">
+            <h2 className="text-3xl lg:text-5xl font-semibold">
+              {getSplitTextAnimation({
+                text: "Our Values",
+                mode: "whileInView",
+                delay: 0.2,
+              })}
+            </h2>
           </div>
-          <div className="col-span-12 md:col-span-9 grid grid-cols-subgrid gap-6">
+          <div className="col-span-12 lg:col-span-9 grid grid-cols-subgrid gap-6">
             {values.map((item) => (
-              <div
+              <MDiv
                 key={item.title}
-                className=" border-l pl-6 border-l-slate-600 col-span-full md:col-span-3 flex flex-col gap-10 md:gap-16 lg:gap-24"
+                className="border-t lg:border-t-0 lg:border-l pt-6 lg:pt-0 lg:pl-6 border-slate-600 col-span-full lg:col-span-3 flex flex-col gap-10 md:gap-16 lg:gap-24"
               >
-                <h3 className="text-4xl font-semibold">{item.title}</h3>
-                <p className="font-medium text-xl">{item.description}</p>
-              </div>
+                <h3 className="text-xl md:text-4xl font-semibold">
+                  {getSplitTextAnimation({
+                    text: item.title,
+                    delay: 0.2,
+                    mode: "whileInView",
+                  })}
+                </h3>
+                <p className="font-medium text-lg md:text-xl">
+                  {getSplitTextAnimation({
+                    text: item.description,
+                    mode: "whileInView",
+                    duration: 0.2,
+                  })}
+                </p>
+              </MDiv>
             ))}
           </div>
         </div>
       </section>
       <section
         id="services"
-        className={clsx("w-full p-10 container mx-auto mt-24 md:mt-32")}
+        className={clsx("w-full p-6 md:p-10 container mx-auto mt-24 md:mt-32")}
       >
-        <MH2
-          className="text-5xl font-semibold w-fit"
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0, transition: { duration: 0.4 } }}
-          viewport={{ once: true }}
-        >
-          How We Can Help
-        </MH2>
+        <h2 className="text-3xl lg:text-5xl font-semibold w-fit">
+          {getSplitTextAnimation({
+            text: "How We Can Help",
+            mode: "whileInView",
+          })}
+        </h2>
         <p className="mt-4 text-xl">
-          From tiny tweaks to big projects, we’re here to make things happen.
+          {getSplitTextAnimation({
+            text: "From tiny tweaks to big projects, we’re here to make things happen.",
+            mode: "whileInView",
+            duration: 0.25,
+          })}
         </p>
         <ul className="mt-9 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <MLi
               key={service.title}
-              className="p-8 border border-[#D1D5DB] rounded-xl drop-shadow"
+              className="p-6 md:p-8 border border-[#D1D5DB] rounded-xl drop-shadow"
               initial={{
                 opacity: 0,
-                y: 100,
+                y: 20,
+                filter: "blur(10px)",
               }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.5 }}
               whileInView={{
                 opacity: 1,
                 y: 0,
-                transition: {
-                  delay: 0.2,
-                  duration: 0.5,
-                },
+                filter: "blur(0px)",
+              }}
+              transition={{
+                delay: 0.1 * index,
+                duration: 0.5,
               }}
             >
               <div className="w-12 lg:w-16 aspect-square flex justify-center items-center rounded-full bg-black1">
@@ -202,10 +222,10 @@ export default function Index() {
                   className="w-6 aspect-square"
                 />
               </div>
-              <h2 className="text-2xl lg:text-subtitle mt-5 font-bold">
+              <h2 className="text-xl lg:text-3xl mt-5 font-bold">
                 {service.title}
               </h2>
-              <p className="text-xl lg:text-2xl mt-2 plus-jakarta-sans">
+              <p className="lg:text-2xl mt-2 plus-jakarta-sans">
                 {service.description}
               </p>
             </MLi>
@@ -215,21 +235,32 @@ export default function Index() {
       <RecentWorks />
       <section
         id="unique"
-        className="w-full p-10 container mx-auto mt-24 md:mt-32"
+        className="w-full p-6 md:p-10 container mx-auto mt-24 md:mt-32"
       >
-        <MH2
-          className="text-5xl font-semibold w-fit"
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0, transition: { duration: 0.4 } }}
-          viewport={{ once: true }}
-        >
-          How We Do Things Differently
-        </MH2>
+        <h2 className="text-3xl lg:text-5xl font-semibold w-fit">
+          {getSplitTextAnimation({
+            text: "How We Do Things Differently",
+            mode: "whileInView",
+          })}
+        </h2>
         <p className="mt-4 text-xl">
-          A little unconventional, a lot effective—here’s how we roll.
+          {getSplitTextAnimation({
+            text: "A little unconventional, a lot effective—here’s how we roll.",
+            mode: "whileInView",
+          })}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mt-10">
-          <div className="group relative w-full md:col-span-4 md:row-span-2 overflow-hidden ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur min-h-[250px] rounded-2xl max-h-full flex flex-col justify-end gap-6 p-4">
+          <MDiv
+            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
+            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+              delay: 0,
+            }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="group relative w-full md:col-span-12 lg:col-span-4 lg:row-span-2 overflow-hidden ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur min-h-[250px] rounded-2xl max-h-full flex flex-col justify-end gap-6 p-4"
+          >
             <div className="absolute inset-0 w-full h-full opacity-10 group-hover:opacity-50 transition-opacity duration-300">
               <Icon
                 id="icon-command"
@@ -262,8 +293,18 @@ export default function Index() {
                 create.
               </p>
             </div>
-          </div>
-          <div className="group relative overflow-hidden w-full md:col-span-4 ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur min-h-[250px] rounded-2xl flex flex-col justify-end gap-6 p-4">
+          </MDiv>
+          <MDiv
+            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
+            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+              delay: 0.1,
+            }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="group relative overflow-hidden w-full md:col-span-6 lg:col-span-4 ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur min-h-[250px] rounded-2xl flex flex-col justify-end gap-6 p-4"
+          >
             <div className="absolute inset-0 w-full h-full opacity-10 group-hover:opacity-50 transition-opacity duration-300">
               <Icon
                 id="icon-copyright"
@@ -287,8 +328,18 @@ export default function Index() {
                 just contractors.
               </p>
             </div>
-          </div>
-          <div className="group relative overflow-hidden w-full md:col-span-4 ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur min-h-[250px] rounded-2xl flex flex-col justify-end gap-6 p-4">
+          </MDiv>
+          <MDiv
+            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
+            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+              delay: 0.1 * 2,
+            }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="group relative overflow-hidden w-full md:col-span-6 lg:col-span-4 ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur min-h-[250px] rounded-2xl flex flex-col justify-end gap-6 p-4"
+          >
             <div className="absolute inset-0 w-full h-full opacity-10 group-hover:opacity-50 transition-opacity duration-300">
               <Icon
                 id="icon-tree-structure"
@@ -314,9 +365,19 @@ export default function Index() {
                 grow ideas with you.
               </p>
             </div>
-          </div>
+          </MDiv>
 
-          <div className="group relative overflow-hidden w-full ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur md:col-span-3 min-h-[250px] rounded-2xl flex flex-col justify-end gap-6 p-4">
+          <MDiv
+            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
+            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+              delay: 0.1 * 3,
+            }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="group relative overflow-hidden w-full ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur md:col-span-6 lg:col-span-3 min-h-[250px] rounded-2xl flex flex-col justify-end gap-6 p-4"
+          >
             <div className="absolute inset-0 w-full h-full opacity-10 group-hover:opacity-50 transition-opacity duration-300">
               <Icon
                 id="icon-intersect"
@@ -340,8 +401,18 @@ export default function Index() {
                 things stand.
               </p>
             </div>
-          </div>
-          <div className="group relative overflow-hidden w-full ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur md:col-span-5 min-h-[250px] rounded-2xl flex flex-col justify-end gap-6 p-4">
+          </MDiv>
+          <MDiv
+            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
+            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+              delay: 0.1 * 4,
+            }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="group relative overflow-hidden w-full ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur md:col-span-6 lg:col-span-5 min-h-[250px] rounded-2xl flex flex-col justify-end gap-6 p-4"
+          >
             <div className="absolute inset-0 w-full h-full opacity-10 group-hover:opacity-50 transition-opacity duration-300">
               <Icon
                 id="icon-quotes"
@@ -364,25 +435,36 @@ export default function Index() {
                 Quick replies, faster iterations — because momentum matters.
               </p>
             </div>
-          </div>
+          </MDiv>
         </div>
       </section>
       <section className="w-full mt-24 md:mt-32" id="testimonials">
-        <div className="container mx-auto p-10">
-          <MH2
-            className="text-5xl font-semibold w-fit"
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0, transition: { duration: 0.4 } }}
-            viewport={{ once: true }}
-          >
-            Hear From Our Clients
-          </MH2>
+        <div className="container mx-auto p-6 md:p-10">
+          <h2 className="text-3xl lg:text-5xl font-semibold w-fit">
+            {getSplitTextAnimation({
+              text: "Hear From Our Clients",
+              mode: "whileInView",
+            })}
+          </h2>
           <p className="mt-4 text-xl">
-            Stories from the folks we’ve worked with—and loved every minute.
+            {getSplitTextAnimation({
+              text: "Stories from the folks we’ve worked with—and loved every minute.",
+              mode: "whileInView",
+            })}
           </p>
         </div>
-        <div className="px-10 container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 md:mt-10">
-          <div className="border-r border-r-slate-500 w-full pr-4 md:pr-8">
+        <div className="px-6 md:px-10 container mx-auto grid grid-cols-1 lg:grid-cols-3 mt-6 md:mt-10">
+          <MDiv
+            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
+            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+              delay: 0,
+            }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="py-6 lg:py-0 border-b lg:border-b-0 lg:border-r border-slate-500 w-full pr-4 md:pr-8"
+          >
             <div>
               <h3 className="text-xl font-semibold">Farhan Hasan</h3>
               <span className="text-slate-400 font-medium">IDEKITE</span>
@@ -391,8 +473,18 @@ export default function Index() {
               Working with them was a great experience. They were really fast in
               resolving the feedback and delivering the project on time.
             </p>
-          </div>
-          <div className="w-full px-4 md:px-8">
+          </MDiv>
+          <MDiv
+            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
+            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+              delay: 0.175,
+            }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="py-6 lg:py-0 border-b lg:border-b-0 border-slate-500 w-full lg:px-8"
+          >
             <div>
               <h3 className="text-xl font-semibold">Surya Mahardika</h3>
               <span className="text-slate-400 font-medium">BPTrans</span>
@@ -402,8 +494,18 @@ export default function Index() {
               not compromise on quality even when the budget and timeline were
               tight.
             </p>
-          </div>
-          <div className="border-l border-l-slate-500 w-full pl-4 md:pl-8">
+          </MDiv>
+          <MDiv
+            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
+            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+              delay: 0.175 * 2,
+            }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="py-6 lg:py-0 border-b lg:border-b-0 lg:border-l border-slate-500 w-full lg:pl-8"
+          >
             <div>
               <h3 className="text-xl font-semibold">Natasha</h3>
               <span className="text-slate-400 font-medium">PT. Pertamina</span>
@@ -412,21 +514,22 @@ export default function Index() {
               With the website they built, our online presence has grown and it
               helps us on shipping our products.
             </p>
-          </div>
+          </MDiv>
         </div>
       </section>
-      <section className="mt-24 md:mt-32 container mx-auto p-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="mt-24 md:mt-32 container mx-auto p-6 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
-          <MH2
-            className="text-5xl font-semibold w-fit"
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0, transition: { duration: 0.4 } }}
-            viewport={{ once: true }}
-          >
-            Your Questions, Answered
-          </MH2>
-          <p className="mt-4 text-xl">
-            The stuff people usually ask us, laid out simply.
+          <h2 className="text-3xl lg:text-5xl font-semibold w-fit">
+            {getSplitTextAnimation({
+              text: "Your Questions, Answered",
+              mode: "whileInView",
+            })}
+          </h2>
+          <p className="mt-4 text-lg md:text-xl">
+            {getSplitTextAnimation({
+              text: "The stuff people usually ask us, laid out simply.",
+              mode: "whileInView",
+            })}
           </p>
         </div>
         <div>
