@@ -6,4 +6,14 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [remix(), netlifyPlugin(), tsconfigPaths(), tailwindcss()],
+  ssr: {
+    noExternal: [
+      "embla-carousel-wheel-gestures",
+      "wheel-gestures",
+      /^embla-carousel.*/,
+    ],
+  },
+  optimizeDeps: {
+    include: ["embla-carousel-wheel-gestures", "wheel-gestures"],
+  },
 });
