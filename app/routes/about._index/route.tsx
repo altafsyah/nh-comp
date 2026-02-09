@@ -2,22 +2,37 @@
 import { MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
+  const title = "About Us | NgodingHouse - Our Story & Values";
+  const description =
+    "We're passionate about crafting digital experiences that inspire. With expertise in web and app development, we turn ideas into reality.";
+  const url = "https://ngodinghouse.com/about";
+  const image = "https://ngodinghouse.com/images/cover.webp";
+
   return [
-    { title: "Ngoding House || About" },
-    {
-      name: "description",
-      content:
-        "We're passionate about crafting digital experiences that inspire. With expertise in web and app development, we turn ideas into reality.",
-    },
+    { title },
+    { name: "description", content: description },
     {
       name: "keywords",
       content:
-        "web development, app development, digital experience, software solutions",
+        "web development, app development, digital experience, software solutions, about ngodinghouse",
     },
-    {
-      name: "author",
-      content: "ngodinghouse",
-    },
+    { name: "author", content: "ngodinghouse" },
+
+    // Open Graph
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: image },
+    { property: "og:url", content: url },
+    { property: "og:type", content: "website" },
+
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+
+    // Canonical URL
+    { tagName: "link", rel: "canonical", href: url },
   ];
 };
 
@@ -39,7 +54,10 @@ export default function About() {
         <div className="w-full h-[300px] lg:h-[500px] bg-gray-300 rounded-xl mt-10 lg:mt-20 overflow-hidden">
           <img
             src="/images/cover.webp"
-            alt="cover"
+            alt="NgodingHouse team workspace"
+            loading="eager"
+            width={1200}
+            height={500}
             className="w-full h-full object-cover"
           />
         </div>

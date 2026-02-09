@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { MH3, MLi, MSpan } from "~/components/motion-wrapper";
 
 interface FAQItemProps {
@@ -52,13 +52,12 @@ function FAQItem({
         {isOpen && (
           <motion.div
             ref={ref}
-            initial={{ height: 0, opacity: 0.3, filter: "blur(5px)" }}
+            initial={{ height: 0, opacity: 0.3 }}
             animate={{
               height: ref.current?.scrollHeight ?? "auto",
               opacity: 1,
-              filter: "blur(0px)",
             }}
-            exit={{ height: 0, opacity: 0.3, filter: "blur(5px)" }}
+            exit={{ height: 0, opacity: 0.3 }}
             transition={{ ease: "easeOut" }}
             className="overflow-hidden "
           >
@@ -105,8 +104,8 @@ export default function FAQs() {
     <ul className="space-y-4">
       {faqItems.map((item, index) => (
         <MLi
-          initial={{ filter: "blur(4px)", y: 12, opacity: 0 }}
-          whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+          initial={{ y: 12, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.125 * index }}
           key={`faq_${index}`}

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
-import { services } from "~/data/home";
+import { heroItems, services, values } from "~/data/home";
 import clsx from "clsx";
 import { MDiv, MH1, MH2, MLi, MP } from "~/components/motion-wrapper";
 import RecentWorks from "./recent-work";
@@ -12,66 +12,41 @@ import { getSplitTextAnimation } from "~/lib/getSplitTextAnimation";
 import { fadeUpValue } from "~/constant/motion-value";
 
 export const meta: MetaFunction = () => {
+  const title = "NgodingHouse | Software Development Agency Pontianak";
+  const description =
+    "NgodingHouse: Your innovative software partner. We specialize in crafting bespoke digital solutions to elevate your business.";
+  const url = "https://ngodinghouse.com";
+  const image = "https://ngodinghouse.com/images/cover.webp";
+
   return [
-    { title: "Software Development || Design & Development" },
-    {
-      name: "description",
-      content:
-        "NgodingHouse: Your innovative software partner. We specialize in crafting bespoke digital solutions to elevate your business.",
-    },
+    { title },
+    { name: "description", content: description },
     {
       name: "keywords",
       content:
         "software house pontianak, jasa pembuatan web, jasa pembuatan aplikasi, ui/ux design, website pontianak, ngodinghouse, indonesia, murah, terpercaya",
     },
-    {
-      name: "author",
-      content: "ngodinghouse",
-    },
-    {
-      name: "viewport",
-      content: "width=device-width, initial-scale=1",
-    },
+    { name: "author", content: "ngodinghouse" },
+
+    // Open Graph
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: image },
+    { property: "og:url", content: url },
+    { property: "og:type", content: "website" },
+
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+
+    // Canonical URL
+    { tagName: "link", rel: "canonical", href: url },
   ];
 };
 
 export default function Index() {
-  const heroItems = [
-    {
-      title: "BPTrans",
-      category: ["Web Design"],
-      imageUrl: "/images/work_dummy_1.jfif",
-    },
-    {
-      title: "Ecommerce Website",
-      category: ["Website Development"],
-      imageUrl: "/images/work_dummy_2.jfif",
-    },
-    {
-      title: "MyAgro Indonesia",
-      category: ["Product Development"],
-      imageUrl: "/images/work_dummy_1.jfif",
-    },
-  ];
-
-  const values = [
-    {
-      title: "Integrity",
-      description:
-        "We believe in being honest and transparent. This helps us build strong, trusting relationships.",
-    },
-    {
-      title: "Innovation",
-      description:
-        "We're always exploring new ideas and technologies to find the best solutions for you.",
-    },
-    {
-      title: "Excellence",
-      description:
-        "We're committed to delivering high-quality work that consistently exceeds expectations.",
-    },
-  ];
-
   return (
     <>
       <section
@@ -111,6 +86,9 @@ export default function Index() {
                 <img
                   src={item.imageUrl}
                   alt={item.title}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  width={800}
+                  height={600}
                   className="object-cover w-full h-full"
                 />
               </div>
@@ -202,13 +180,11 @@ export default function Index() {
               initial={{
                 opacity: 0,
                 y: 20,
-                filter: "blur(10px)",
               }}
               viewport={{ once: true, amount: 0.5 }}
               whileInView={{
                 opacity: 1,
                 y: 0,
-                filter: "blur(0px)",
               }}
               transition={{
                 delay: 0.1 * index,
@@ -218,7 +194,10 @@ export default function Index() {
               <div className="w-12 lg:w-16 aspect-square flex justify-center items-center rounded-full ring-2 ring-slate-500 bg-slate-800/60 backdrop-blur">
                 <img
                   src={service.icon}
-                  alt="ui"
+                  alt=""
+                  loading="lazy"
+                  width={24}
+                  height={24}
                   className="w-6 aspect-square"
                 />
               </div>
@@ -251,8 +230,8 @@ export default function Index() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mt-10">
           <MDiv
-            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
-            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{
               duration: 0.5,
               ease: "easeOut",
@@ -295,8 +274,8 @@ export default function Index() {
             </div>
           </MDiv>
           <MDiv
-            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
-            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{
               duration: 0.5,
               ease: "easeOut",
@@ -330,8 +309,8 @@ export default function Index() {
             </div>
           </MDiv>
           <MDiv
-            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
-            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{
               duration: 0.5,
               ease: "easeOut",
@@ -368,8 +347,8 @@ export default function Index() {
           </MDiv>
 
           <MDiv
-            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
-            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{
               duration: 0.5,
               ease: "easeOut",
@@ -403,8 +382,8 @@ export default function Index() {
             </div>
           </MDiv>
           <MDiv
-            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
-            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{
               duration: 0.5,
               ease: "easeOut",
@@ -455,8 +434,8 @@ export default function Index() {
         </div>
         <div className="px-6 md:px-10 container mx-auto grid grid-cols-1 lg:grid-cols-3 mt-6 md:mt-10">
           <MDiv
-            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
-            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{
               duration: 0.5,
               ease: "easeOut",
@@ -475,8 +454,8 @@ export default function Index() {
             </p>
           </MDiv>
           <MDiv
-            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
-            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{
               duration: 0.5,
               ease: "easeOut",
@@ -496,8 +475,8 @@ export default function Index() {
             </p>
           </MDiv>
           <MDiv
-            initial={{ filter: "blur(8px)", y: 40, opacity: 0 }}
-            whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{
               duration: 0.5,
               ease: "easeOut",

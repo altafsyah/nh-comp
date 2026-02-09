@@ -40,8 +40,8 @@ export default function RecentWorks() {
         <div className="mt-9 flex gap-6 pl-6 md:pl-10 cursor-grab active:cursor-grabbing embla__container">
           {WORKS.map((workItem, index) => (
             <MDiv
-              initial={{ filter: "blur(4px)", y: 12, opacity: 0 }}
-              whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+              initial={{ y: 12, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
               transition={{
                 duration: 0.5,
                 ease: "easeOut",
@@ -58,6 +58,9 @@ export default function RecentWorks() {
                 <img
                   src={workItem}
                   alt="MyAgro an agriculture startup that raises fund to solve climate change problem"
+                  loading="lazy"
+                  width={800}
+                  height={450}
                   className="object-cover w-full h-full"
                 />
               </div>

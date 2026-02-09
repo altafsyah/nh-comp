@@ -19,48 +19,6 @@ export const services = [
   },
 ];
 
-export const partners = [
-  {
-    name: "Klarna",
-    logo: "/images/klarna_dummy.webp",
-  },
-  {
-    name: "Google",
-    logo: "/images/google_dummy.webp",
-  },
-  {
-    name: "Airbnb",
-    logo: "/images/airbnb_dummy.webp",
-  },
-  {
-    name: "Duolingo",
-    logo: "/images/duolingo_dummy.webp",
-  },
-  {
-    name: "Bumble",
-    logo: "/images/bumble_dummy.webp",
-  },
-];
-
-export const aboutImages = [
-  {
-    src: "/images/dummy_1.jfif",
-    alt: "About 1",
-  },
-  {
-    src: "/images/dummy_2.jfif",
-    alt: "About 2",
-  },
-  {
-    src: "/images/dummy_3.jfif",
-    alt: "About 3",
-  },
-  {
-    src: "/images/dummy_4.jfif",
-    alt: "About 4",
-  },
-];
-
 export const works = [
   {
     title: "ESDM Kalbar",
@@ -160,50 +118,38 @@ export const works = [
   },
 ];
 
-export const testimonials = [
+export const heroItems = [
   {
-    id: 1,
-    text: "Thanks to ngodinghouse, our website now captivates our audience with its stunning design and seamless functionality. Highly recommend their services!",
-    name: "Delaney Miller",
-    client: "Windsor Troy",
+    title: "BPTrans",
+    category: ["Web Design"],
+    imageUrl: "/images/work_dummy_1.jfif",
   },
   {
-    id: 2,
-    text: "Thanks to ngodinghouse, our website now captivates our audience with its stunning design and seamless functionality. Highly recommend their services!",
-    name: "Delaney Miller",
-    client: "Windsor Troy",
+    title: "Ecommerce Website",
+    category: ["Website Development"],
+    imageUrl: "/images/work_dummy_2.jfif",
   },
   {
-    id: 3,
-    text: "Thanks to ngodinghouse, our website now captivates our audience with its stunning design and seamless functionality. Highly recommend their services!",
-    name: "Delaney Miller",
-    client: "Windsor Troy",
+    title: "MyAgro Indonesia",
+    category: ["Product Development"],
+    imageUrl: "/images/work_dummy_1.jfif",
   },
 ];
 
-export const accounts = [
+export const values = [
   {
-    name: "Instagram",
-    icon: "/images/instagram.svg",
+    title: "Integrity",
+    description:
+      "We believe in being honest and transparent. This helps us build strong, trusting relationships.",
   },
   {
-    name: "Instagram",
-    icon: "/images/instagram.svg",
+    title: "Innovation",
+    description:
+      "We're always exploring new ideas and technologies to find the best solutions for you.",
   },
   {
-    name: "Instagram",
-    icon: "/images/instagram.svg",
-  },
-  {
-    name: "Instagram",
-    icon: "/images/instagram.svg",
-  },
-  {
-    name: "Instagram",
-    icon: "/images/instagram.svg",
-  },
-  {
-    name: "Instagram",
-    icon: "/images/instagram.svg",
+    title: "Excellence",
+    description:
+      "We're committed to delivering high-quality work that consistently exceeds expectations.",
   },
 ];

@@ -11,6 +11,7 @@ import type { LinksFunction } from "@remix-run/node";
 import stylesheet from "~/tailwind.css?url";
 import { ReactLenis } from "lenis/react";
 import Footer from "./components/footer";
+import Nav from "./components/nav";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -32,23 +33,57 @@ export const links: LinksFunction = () => [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "NgodingHouse",
+  url: "https://ngodinghouse.com",
+  logo: "https://ngodinghouse.com/images/logo.svg",
+  sameAs: ["https://instagram.com/ngodinghouse"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Pontianak",
+    addressCountry: "ID",
+  },
+  description:
+    "Software development agency specializing in web and app development",
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
         <Meta />
         <Links />
       </head>
       <body className="urbanist bg-slate-950 text-gray-300 overflow-hidden">
-        <ReactLenis root />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded z-[9999] font-medium"
+        >
+          Skip to content
+        </a>
+        <Nav />
+        <ReactLenis
+          root
+          options={{
+            lerp: 0.1,
+            smoothWheel: true,
+            syncTouch: false,
+          }}
+        />
 
-        <main className="w-full min-h-[60vh]">{children}</main>
+        <main id="main-content" className="w-full min-h-[60vh] pt-16">
+          {children}
+        </main>
         <Footer />
         <ScrollRestoration />
         <Scripts />
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
       </body>
     </html>
   );

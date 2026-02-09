@@ -27,7 +27,7 @@ export const getSplitTextAnimation = ({
         ? { animate: { opacity: 1, filter: "blur(0px)", y: 0 } }
         : { whileInView: { opacity: 1, filter: "blur(0px)", y: 0 }, viewport })}
       transition={{
-        duration: duration ?? 0.5,
+        duration: duration ?? 0.3,
         delay: delay ?? 0.1 * index,
         ease: "easeOut",
       }}

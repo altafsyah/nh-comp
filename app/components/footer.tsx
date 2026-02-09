@@ -6,8 +6,8 @@ export default function Footer() {
   return (
     <footer className="w-full pt-12 relative overflow-hidden mt-24 md:mt-32">
       <MSection
-        initial={{ filter: "blur(4px)", y: -12, opacity: 0 }}
-        whileInView={{ filter: "blur(0px)", y: 0, opacity: 1 }}
+        initial={{ y: -12, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="container mx-auto p-6 md:p-10 ring-2 ring-slate-500 lg:rounded-3xl bg-slate-800/60 backdrop-blur relative overflow-hidden group"
@@ -26,7 +26,13 @@ export default function Footer() {
             ease: "easeOut",
           }}
         >
-          <img src="/images/logo.svg" alt="ngasd" />
+          <img
+            src="/images/logo.svg"
+            alt="NgodingHouse logo"
+            loading="lazy"
+            width={200}
+            height={200}
+          />
         </MDiv>
         <div className="relative">
           <p className="text-2xl md:text-3xl font-bold w-full">
@@ -49,16 +55,20 @@ export default function Footer() {
           <Link to="/" className="text-3xl font-bold">
             ngodinghouse
           </Link>
-          <h5>© 2025 | All Rights Reserved.</h5>
+          <h5>© {new Date().getFullYear()} | All Rights Reserved.</h5>
           <div className="flex gap-4 items-center">
             <a
               href="https://www.instagram.com/ngodinghouse/"
               target="_blank"
               rel="noreferrer"
+              aria-label="Follow us on Instagram"
             >
               <img
                 src="/images/instagram.svg"
-                alt="Instagram"
+                alt=""
+                loading="lazy"
+                width={24}
+                height={24}
                 className="h-6"
               />
             </a>
